@@ -2,8 +2,7 @@ name: Deploy alexgogogo to Server
 
 on:
   push:
-    branches:
-      - main
+    branches: [main]
 
 jobs:
   deploy:
@@ -14,7 +13,7 @@ jobs:
         uses: actions/checkout@v3
 
       - name: Deploy to Server
-        uses: appleboy/ssh-action@v0.1.7
+        uses: appleboy/ssh-action@v1  # 使用新版 Action
         with:
           host: ${{ secrets.REMOTE_HOST }}
           username: ${{ secrets.REMOTE_USER }}
@@ -22,7 +21,8 @@ jobs:
           script: |
             cd aleeeeexgogogo || exit 1
             git pull origin main || exit 1
-            docker ps -q --filter "name=alexgogogo" | grep -q . && docker stop alexgogogo
-            docker ps -aq --filter "name=alexgogogo" | grep -q . && docker rm alexgogogo
-            docker build --no-cache -t alexgogogo . || exit 1
-            docker run -d --restart unless-stopped -p 3000:3000 --name next-app alexgogogo || exit 1
+            # 强制清理旧容器
+            docker rm -f alexgogogo 2>/dev/null || true
+            # 构建并启动新容器
+            docker build --no-cache -t alexgogogo . 
+            docker run -d --restart unless-stopped -p 3000:3000 --name next-app alexgogogo
