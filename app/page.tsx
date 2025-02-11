@@ -32,7 +32,7 @@ export default function Portfolio() {
           <div className="space-y-6">
             <p className="text-gray-300 text-lg leading-relaxed space-y-4">
               <span className="block">
-                Hi, I'm Alex. I'm proficient in JavaScript, HTML, CSS, and
+                Hi, Im Alex. Im proficient in JavaScript, HTML, CSS, and
                 TypeScript with an in-depth understanding of ES6.
               </span>
 
