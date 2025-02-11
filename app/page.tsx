@@ -23,7 +23,7 @@ export default function Portfolio() {
               className="rounded-full"
             />
             <div>
-              <h1 className="text-2xl font-mono">AleeeeexGo</h1>
+              <h1 className="text-2xl font-mono">AleeeeexGoGo</h1>
               <p className="text-gray-400">Frontend Engineer</p>
             </div>
           </div>
