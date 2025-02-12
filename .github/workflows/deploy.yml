@@ -12,6 +12,9 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v3
 
+      - name: Add safe directory for git
+        run: git config --global --add safe.directory /home/ubuntu/aleeeeexgogogo
+
       - name: Deploy to Server
         uses: appleboy/ssh-action@v1.2.0  # 使用新版 Action
         with:
